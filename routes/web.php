@@ -6,20 +6,16 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 //use App\Models\Chirp;
 use DragonCode\Contracts\Cashier\Http\Request;
+use GuzzleHttp\Psr7\Query;
+use Illuminate\Support\Facades\DB;
 
 // Route::get('/', function () {
 //     return 'welcome to our home page';
 // });
 
+
+
 Route::view('/', 'welcome')->name('welcome');
-
-
-
-
-
-
-
-
 
 Route::middleware('auth')->group(function () {
 
@@ -35,7 +31,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/chirps', [ChirpController::class, 'store'])
     ->name('chirps.store');
 
-    
+    Route::get('/chirps/{chirp}/edit',[ChirpController::class, 'edit'])
+
+    ->name('chirps.edit');
+
+    Route::put('/chirps/{chirp}', [ChirpController::class, 'update'])
+    ->name('chirps.update');
+
+    Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy'])
+    ->name('chirps.destroy');
 
 });
 

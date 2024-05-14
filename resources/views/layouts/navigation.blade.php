@@ -1,7 +1,5 @@
 @if (session('status'))
-
-<div class="bg-green-600 text-green-100 text-center text-lg font-bold p-2">{{session('status')}}</div>
-
+    <div class="bg-green-600 text-green-100 text-center text-lg font-bold p-2">{{ session('status') }}</div>
 @endif
 <nav x-data="{ open: false }" class="bg-white dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
     <!-- Primary Navigation Menu -->
@@ -21,7 +19,7 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
-                    <x-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.index')">
+                    <x-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
                         {{ __('chirps') }}
                     </x-nav-link>
 
@@ -81,7 +79,7 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
 
-            <x-responsive-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.index')">
+            <x-responsive-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.*')">
                 {{ __('chirps') }}
             </x-responsive-nav-link>
         </div>
