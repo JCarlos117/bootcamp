@@ -40,7 +40,7 @@
                                     >
                                         Iniciar Sesion
                                     </a>
-
+                    
                                     @if (Route::has('register'))
                                         <a
                                             href="{{ route('register') }}"

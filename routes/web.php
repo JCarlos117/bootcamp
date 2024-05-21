@@ -4,10 +4,12 @@
 use App\Http\Controllers\ChirpController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OpinionController;
 //use App\Models\Chirp;
 use DragonCode\Contracts\Cashier\Http\Request;
 use GuzzleHttp\Psr7\Query;
 use Illuminate\Support\Facades\DB;
+
 
 // Route::get('/', function () {
 //     return 'welcome to our home page';
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\DB;
 
 
 
-Route::view('/', 'welcome')->name('welcome');
+Route::view('/', 'indexislas')->name('welcome');
 
 Route::middleware('auth')->group(function () {
 
@@ -40,6 +42,18 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy'])
     ->name('chirps.destroy');
+    // routes/web.php
+
+
+Route::get('/indexIslas', function () {
+    return view('indexIslas');
+});
+
+
+
+Route::post('/opinions', [OpinionController::class, 'store'])->name('opinions.store');
+
+
 
 });
 
